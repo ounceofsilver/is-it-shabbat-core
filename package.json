@@ -1,0 +1,15 @@
+{
+  "name": "is-it-shabbat-core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "James P. Fulford <james.patrick.fulford@gmail.com>",
+  "license": "MIT",
+  "private": true,
+	"dependencies": {
+		"axios": "0.18.0",
+		"luxon": "1.8.0",
+		"redux": "4.0.0",
+		"tz-lookup": "6.1.8",
+		"shabbat-logic": "git+ssh://bitbucket.org:ounceofsilver/shabbat-logic.git#master"
+	}
+}
