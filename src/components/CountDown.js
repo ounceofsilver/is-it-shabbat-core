@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DateTime } from 'luxon';
 
-export default class CountDown extends Component {
+export const j = 1; // TODO(jessica): export your time -> string function here
+
+export class CountDown extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

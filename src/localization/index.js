@@ -14,3 +14,5 @@ export const en_US = {
 		},
 	},
 };
+
+export const en = {};

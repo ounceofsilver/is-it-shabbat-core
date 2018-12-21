@@ -1,2 +1,2 @@
-export const ShabbatCheck = require('./ShabbatCheck').default;
-export const CountDown = require('./CountDown').default;
+export * as CountDown from './CountDown';
+export * as ShabbatCheck from './ShabbatCheck';
