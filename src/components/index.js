@@ -1,2 +1,2 @@
-export * as CountDown from './CountDown';
-export * as ShabbatCheck from './ShabbatCheck';
+export CountDown from './CountDown';
+export ShabbatCheck from './ShabbatCheck';
