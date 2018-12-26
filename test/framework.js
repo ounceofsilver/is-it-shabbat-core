@@ -5,6 +5,7 @@
 //
 // Imports
 //
+import '@babel/polyfill';
 // JSDOM utils
 import { JSDOM } from 'jsdom';
 // Node utils
