@@ -19,7 +19,6 @@
 		"tdd": "npm run test -- -w",
 		"lint": "eslint ./src/**/*.js ./test",
 		"build": "babel src -d lib",
-		"postinstall": "npm run build",
 		"report": "nyc --reporter=lcov --reporter=text npm run test",
 		"coverage": "npm run report && open ./coverage/lcov-report/index.html"
 	},
