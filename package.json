@@ -11,15 +11,15 @@
 		}
 	},
 	"nyc": {
-    "include": "src",
-    "exclude": "**/*.spec.js"
-  },
+		"include": "src",
+		"exclude": "**/*.spec.js"
+	},
 	"scripts": {
 		"test": "mocha ./src/**/*.spec.js",
 		"tdd": "npm run test -- -w",
 		"lint": "eslint ./src/**/*.js ./test",
 		"build": "babel src -d lib",
-		"prepublish": "npm run build",
+		"postinstall": "npm run build",
 		"report": "nyc --reporter=lcov --reporter=text npm run test",
 		"coverage": "npm run report && open ./coverage/lcov-report/index.html"
 	},
