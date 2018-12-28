@@ -2,8 +2,8 @@
 	"name": "is-it-shabbat-core",
 	"version": "1.0.0",
 	"main": "lib/index.js",
-	"author": "James P. Fulford <james.patrick.fulford@gmail.com>",
-	"private": true,
+	"licenses": "MIT",
+	"author": "James Fulford <james.fulford@outlook.com>",
 	"husky": {
 		"hooks": {
 			"pre-commit": "npm run lint",
@@ -14,11 +14,15 @@
 		"include": "src",
 		"exclude": "**/*.spec.js"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"test": "mocha ./src/**/*.spec.js",
 		"tdd": "npm run test -- -w",
 		"lint": "eslint ./src/**/*.js ./test",
 		"build": "babel src -d lib",
+		"prepare": "npm run build",
 		"report": "nyc --reporter=lcov --reporter=text npm run test",
 		"coverage": "npm run report && open ./coverage/lcov-report/index.html"
 	},
@@ -28,7 +32,7 @@
 		"prop-types": "15.6.2",
 		"react": "16.7.0",
 		"redux": "4.0.0",
-		"shabbat-logic": "git+ssh://bitbucket.org:ounceofsilver/shabbat-logic.git#master",
+		"shabbat-logic": "1.0.0",
 		"tz-lookup": "6.1.8"
 	},
 	"devDependencies": {
