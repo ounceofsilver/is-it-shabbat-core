@@ -33,7 +33,7 @@ const defaultConfig = {
 	i: 'off',
 };
 
-const sendHolidayRequestAsync = (t, overrides) => axios({
+export const sendHolidayRequestAsync = (t, overrides) => axios({
 	method: 'get',
 	url: 'https://www.hebcal.com/hebcal/',
 	params: {
@@ -46,7 +46,7 @@ const sendHolidayRequestAsync = (t, overrides) => axios({
 	},
 });
 
-const getHolidaysAsync = async (now, months = 2, overrides = {}) => {
+export const getHolidaysAsync = async (now, months, overrides = {}) => {
 	if (months <= 0) {
 		return [];
 	}
@@ -86,10 +86,4 @@ const getHolidaysAsync = async (now, months = 2, overrides = {}) => {
 			}),
 		});
 	});
-};
-
-// getHolidaysAsync(DateTime.local(), 2).then(console.log);
-
-module.exports = {
-	getHolidaysAsync,
 };

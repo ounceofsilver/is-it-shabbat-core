@@ -1,21 +1,17 @@
-import {
-	Component,
-} from 'react';
+import 'react';
 import PropTypes from 'prop-types';
 import { DateTime } from 'luxon';
 
 import { isItShabbat } from 'shabbat-logic';
 
-export default class ShabbatCheck extends Component {
-	render() {
-		const { now, location, children } = this.props;
-		if (!location) {
-			return null;
-		}
-		const { coords: { latitude, longitude } } = location;
-		const { period, countDownTo } = isItShabbat(now, latitude, longitude);
-		return children(period, countDownTo);
+export default function ShabbatCheck(props) {
+	const { now, location, children } = props;
+	if (!location) {
+		return null;
 	}
+	const { coords: { latitude, longitude } } = location;
+	const { period, countDownTo } = isItShabbat(now, latitude, longitude);
+	return children(period, countDownTo);
 }
 ShabbatCheck.propTypes = {
 	now: PropTypes.instanceOf(DateTime).isRequired,
@@ -25,5 +21,9 @@ ShabbatCheck.propTypes = {
 			longitude: PropTypes.number,
 		}),
 	}).isRequired,
-	children: PropTypes.func.isRequired,
+	children: PropTypes.func,
+};
+
+ShabbatCheck.defaultProps = {
+	children: () => {},
 };

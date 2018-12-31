@@ -12,9 +12,10 @@ export default class CountDown extends Component {
 	}
 
 	componentDidMount() {
+		const { refreshInterval } = this.props;
 		this.timerId = setInterval(
 			() => this.tick(),
-			199,
+			refreshInterval,
 		);
 	}
 
@@ -63,10 +64,12 @@ export default class CountDown extends Component {
 CountDown.propTypes = {
 	start: PropTypes.instanceOf(DateTime).isRequired,
 	end: PropTypes.instanceOf(DateTime).isRequired,
+	refreshInterval: PropTypes.number,
 	callback: PropTypes.func,
 	children: PropTypes.func,
 };
 CountDown.defaultProps = {
 	callback: () => {},
 	children: () => {},
+	refreshInterval: 100,
 };

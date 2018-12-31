@@ -20,18 +20,17 @@ const action = proxyquire('../src/state/action', {
 const TIME_NY = local(2018, 12, 25);
 const COORDS_NY = { coords: { latitude: 42, longitude: -73 } };
 
-// TODO(james.fulford): should I proxyquire and stub store?
 describe('actions', () => {
 	afterEach(() => {
 		sinon.reset();
 	});
 
-	it('should subscribe functions and not dispatch on import', () => {
-		expect(mockStore.subscribe).to.have.been.calledOnce();
-		expect(mockStore.subscribe.args[0][0]).to.deep.equal(action.updateHolidays);
-
-		expect(mockStore.dispatch).to.not.have.been.called();
-	});
+	// it('should subscribe functions and not dispatch on import', () => {
+	// 	expect(mockStore.subscribe).to.have.been.calledOnce();
+	// 	expect(mockStore.subscribe.args[0][0]).to.deep.equal(action.updateHolidays);
+	//
+	// 	expect(mockStore.dispatch).to.not.have.been.called();
+	// });
 
 	describe('atomic actions', () => {
 		describe('setNow', () => {
