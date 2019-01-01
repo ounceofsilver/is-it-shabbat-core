@@ -21,7 +21,7 @@ export const defaultState = {
 	// This DateTime does not have to care about location
 	lastHolidayRequest: null,
 };
-export const reducer = (state = defaultState, action) => {
+export const reducer = (state = defaultState, action = {}) => {
 	//
 	// Initialization
 	//

@@ -5,3 +5,4 @@ yarn.lock
 lib/*
 .nyc_output
 coverage
+.scannerwork

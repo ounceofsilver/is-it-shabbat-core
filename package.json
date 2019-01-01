@@ -18,13 +18,13 @@
 		"access": "public"
 	},
 	"scripts": {
-		"test": "mocha ./src/**/*.spec.js",
-		"tdd": "npm run test -- -w",
-		"lint": "eslint ./src/**/*.js ./test",
 		"build": "babel src -d lib",
-		"prepare": "npm run build",
+		"lint": "eslint ./src/**/*.js ./test",
+		"test": "mocha ./src/**/*.spec.js",
 		"report": "nyc --reporter=lcov --reporter=text npm run test",
-		"coverage": "npm run report && open ./coverage/lcov-report/index.html"
+		"scan": "npm run report && bash scripts/scan.sh",
+		"prepare": "npm run build",
+		"tdd": "npm run test -- -w"
 	},
 	"dependencies": {
 		"axios": "0.18.0",
@@ -63,6 +63,7 @@
 		"proxyquire": "2.1.0",
 		"react-dom": "16.7.0",
 		"sinon": "7.1.1",
-		"sinon-chai": "3.2.0"
+		"sinon-chai": "3.2.0",
+		"sonarqube-scanner": "2.1.2"
 	}
 }
