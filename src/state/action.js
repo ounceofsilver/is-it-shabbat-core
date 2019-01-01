@@ -6,35 +6,27 @@ import store from './store';
 // Atomic actions
 //
 // Do not export; forse use of updateHolidays
-export const setNow = (now) => {
-	store.dispatch({
-		type: 'SET_NOW',
-		now,
-	});
-};
+export const setNow = now => ({
+	type: 'SET_NOW',
+	now,
+});
 
-const setHolidays = (holidays, now) => {
-	store.dispatch({
-		type: 'SET_HOLIDAYS',
-		holidays,
-		now,
-	});
-};
+const setHolidays = (holidays, now) => ({
+	type: 'SET_HOLIDAYS',
+	holidays,
+	now,
+});
 
-export const setLocation = (location) => {
-	store.dispatch({
-		type: 'SET_LOCATION',
-		location,
-	});
-};
+export const setLocation = location => ({
+	type: 'SET_LOCATION',
+	location,
+});
 
-export const initialize = (now, location) => {
-	store.dispatch({
-		type: 'INITIALIZE',
-		now,
-		location,
-	});
-};
+export const initialize = (now, location) => ({
+	type: 'INITIALIZE',
+	now,
+	location,
+});
 
 //
 // Advanced actions
@@ -59,7 +51,7 @@ export const updateHolidays = (force = false) => {
 	) {
 		// TODO(james.fulford): if config for Israel is "infer", infer here and pass in as override
 		return getHolidaysAsync(now, 2, {})
-			.then(hs => setHolidays(
+			.then(hs => store.dispatch(setHolidays(
 				hs
 					.map(h => ({
 						...h,
@@ -67,7 +59,7 @@ export const updateHolidays = (force = false) => {
 					}))
 					.filter(h => h.date > now),
 				now,
-			));
+			)));
 	}
 	return Promise.resolve(false);
 };

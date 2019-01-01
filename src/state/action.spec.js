@@ -35,9 +35,8 @@ describe('actions', () => {
 	describe('atomic actions', () => {
 		describe('setNow', () => {
 			it('should dispatch a SET_NOW action', () => {
-				action.setNow(TIME_NY);
-				expect(mockStore.dispatch).to.have.been.calledOnce();
-				expect(mockStore.dispatch.args[0][0]).to.deep.equal({
+				const act = action.setNow(TIME_NY);
+				expect(act).to.deep.equal({
 					type: 'SET_NOW',
 					now: TIME_NY,
 				});
@@ -46,9 +45,8 @@ describe('actions', () => {
 
 		describe('setLocation', () => {
 			it('should dispatch a SET_LOCATION action', () => {
-				action.setLocation(COORDS_NY);
-				expect(mockStore.dispatch).to.have.been.calledOnce();
-				expect(mockStore.dispatch.args[0][0]).to.deep.equal({
+				const act = action.setLocation(COORDS_NY);
+				expect(act).to.deep.equal({
 					type: 'SET_LOCATION',
 					location: COORDS_NY,
 				});
@@ -57,9 +55,8 @@ describe('actions', () => {
 
 		describe('initialize', () => {
 			it('should dispatch a SET_LOCATION action', () => {
-				action.initialize(TIME_NY, COORDS_NY);
-				expect(mockStore.dispatch).to.have.been.calledOnce();
-				expect(mockStore.dispatch.args[0][0]).to.deep.equal({
+				const act = action.initialize(TIME_NY, COORDS_NY);
+				expect(act).to.deep.equal({
 					type: 'INITIALIZE',
 					location: COORDS_NY,
 					now: TIME_NY,
