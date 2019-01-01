@@ -1,6 +1,6 @@
 {
 	"name": "is-it-shabbat-core",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"main": "lib/index.js",
 	"licenses": "MIT",
 	"author": "James Fulford <james.fulford@outlook.com>",
