@@ -20,7 +20,7 @@ const defaultConfig = {
 	maj: 'on',
 	min: 'off',
 	mod: 'off',
-	nx: 'on',
+	nx: 'off',
 	ss: 'off',
 	s: 'off',
 	mf: 'off',
