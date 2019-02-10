@@ -2,8 +2,7 @@ import { is } from 'shabbat-logic';
 
 export default {
 	translate: {
-		copyright: '© 2019, James Fulford.',
-		credit: 'Styles and Concept by Jessica Fulford',
+		copyright: '© 2019, James Fulford and Jessica Fulford.',
 		status: {
 			[is.SHABBAT]: 'Yes!',
 			[is.NOT_SHABBAT]: 'No...',
