@@ -7,7 +7,7 @@ export const fonts = {
 	primary: 'FredokaOne',
 };
 export const size = {
-	title: 80,
+	title: 72,
 	secondary: 22,
 	subtitle: 18,
 };
