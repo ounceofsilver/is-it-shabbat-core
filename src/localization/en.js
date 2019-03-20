@@ -14,6 +14,11 @@ export default {
 			[is.NOT_SHABBAT]: 'until candle lighting',
 			[is.CANDLELIGHTING]: 'until Shabbat begins',
 		},
+		startEventName: {
+			[is.SHABBAT]: 'Shabbat ends',
+			[is.NOT_SHABBAT]: 'Candle Lighting',
+			[is.CANDLELIGHTING]: 'Shabbat begins',
+		},
 		screens: {
 			settings: 'Settings',
 			info: 'Credits',
