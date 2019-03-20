@@ -83,7 +83,10 @@ export const getHolidaysAsync = async (now, months, overrides = {}) => {
 				minute: 0,
 				second: 0,
 				zone: now.zone,
-			}),
+			}).minus({ days: 1 }),
+			// hebcal gregorian dates correspond
+			// to the END of the hebrew day.
+			// this code wants the BEGINNING of the hebrew day.
 		});
 	});
 };
