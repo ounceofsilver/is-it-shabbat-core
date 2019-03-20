@@ -2,6 +2,7 @@ import { is } from 'shabbat-logic';
 
 export default {
 	translate: {
+		title: 'Is It Shabbat?',
 		copyright: '© 2019, James Fulford and Jessica Fulford.',
 		status: {
 			[is.SHABBAT]: 'Yes!',
