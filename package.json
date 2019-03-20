@@ -6,8 +6,8 @@
 	"author": "James Fulford <james.fulford@outlook.com>",
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run lint",
-			"pre-push": "npm run test && npm run build"
+			"pre-commit": "yarn lint",
+			"pre-push": "yarn test && yarn build"
 		}
 	},
 	"nyc": {
@@ -21,10 +21,10 @@
 		"build": "babel src -d lib",
 		"lint": "eslint ./src/**/*.js ./test",
 		"test": "mocha ./src/**/*.spec.js",
-		"report": "nyc --reporter=lcov --reporter=text npm run test",
-		"scan": "npm run report && bash scripts/scan.sh",
-		"prepare": "npm run build",
-		"tdd": "npm run test -- -w"
+		"report": "nyc --reporter=lcov --reporter=text yarn test",
+		"scan": "yarn report && bash scripts/scan.sh",
+		"prepare": "yarn build",
+		"tdd": "yarn test -- -w"
 	},
 	"dependencies": {
 		"@babel/runtime": "7.2.0",
