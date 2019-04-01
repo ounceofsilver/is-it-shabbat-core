@@ -18,6 +18,7 @@
 		"access": "public"
 	},
 	"scripts": {
+		"prebuild": "rm -rf ./lib",
 		"build": "babel src -d lib",
 		"lint": "eslint ./src/**/*.js ./test",
 		"test": "mocha ./src/**/*.spec.js",
