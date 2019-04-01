@@ -21,7 +21,11 @@ export default {
 		},
 		screens: {
 			settings: 'Settings',
-			info: 'Credits',
+		},
+		settings: {
+			location: {
+				useCurrentLocation: 'Use Current Location',
+			},
 		},
 	},
 };
