@@ -1,0 +1,27 @@
+{
+    "title": "Is It Shabbat?",
+    "copyright": "© 2018-2019\nAn Ounce of Silver Technologies",
+    "status": {
+        "SHABBAT": "Yes!",
+        "NOT_SHABBAT": "No...",
+        "CANDLELIGHTING": "Almost..."
+    },
+    "endEventName": {
+        "SHABBAT": "%{duration}\nuntil Shabbat ends",
+        "NOT_SHABBAT": "%{duration}\nuntil candle lighting",
+        "CANDLELIGHTING": "%{duration}\nuntil Shabbat begins"
+    },
+    "startEventName": {
+        "SHABBAT": "Shabbat ends at\n%{end}",
+        "NOT_SHABBAT": "Candle Lighting at\n%{end}",
+        "CANDLELIGHTING": "Shabbat begins at\n%{end}"
+    },
+    "screens": {
+        "settings": "Settings"
+    },
+    "settings": {
+        "location": {
+            "useCurrentLocation": "Use Current Location"
+        }
+    }
+}
