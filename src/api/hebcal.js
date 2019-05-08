@@ -10,24 +10,26 @@ const baseParams = {
 
 	// hebdate: includes items with .memo giving hebrew date,
 	// i.e. '1st of Kislev, 5779'. hebdate items are separate from holidays
-	D: 'on', // hebdate for every holiday
-	d: 'off', // hebdate for every hebrew day in the month
+	// hebdate for every holiday
+	D: 'on',
+	// hebdate for every hebrew day in the month
+	d: 'off',
 };
 
 
 const defaultConfig = {
 	// Holidays
-	maj: 'on',
-	min: 'off',
-	mod: 'off',
-	nx: 'on',
-	ss: 'off',
-	s: 'off',
-	mf: 'off',
-	o: 'off',
+	maj: 'on', // major holidays
+	min: 'off', // minor holidays
+	mod: 'off', // modern holidays
+	nx: 'on', // rosh chodeshim
+	ss: 'on', // special shabbats
+	s: 'off', // parashat data
+	mf: 'off', // minor fasts
+	o: 'on', // days of omer
 
 	// language
-	lg: 'a',
+	lg: 'a', // ashkenazi pronouncement
 
 	// Depends on location (Israel)
 	i: 'off',
