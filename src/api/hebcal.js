@@ -76,6 +76,7 @@ export const getHolidaysAsync = async (now, months, overrides = {}) => {
 		const [year, month, day] = h.date.split('-').map(Number);
 		return ({
 			...h,
+			yomtov: Boolean(h.yomtov),
 			hebdate: hebdates[h.date],
 			date: DateTime.fromObject({
 				year,

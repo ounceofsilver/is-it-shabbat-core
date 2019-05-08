@@ -56,8 +56,7 @@ export const updateHolidays = (force = false) => {
 					.map(h => ({
 						...h,
 						date: sunset(h.date, location.coords.latitude, location.coords.longitude),
-					}))
-					.filter(h => h.date > now),
+					})),
 				now,
 			)));
 	}

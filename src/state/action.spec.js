@@ -145,22 +145,6 @@ describe('actions', () => {
 					});
 				});
 
-				it('should ignore past holidays', async () => {
-					getHolidaysAsync.resolves([
-						{ date: local(2018, 12, 24) },
-						{ date: local(2018, 11, 31) },
-					]);
-
-					await action.updateHolidays(true);
-
-					expect(mockStore.dispatch).to.have.been.calledOnce();
-					expect(mockStore.dispatch.args[0][0]).to.deep.equal({
-						type: 'SET_HOLIDAYS',
-						holidays: [],
-						now: TIME_NY,
-					});
-				});
-
 				it('should adjust holiday dates to be at sunset', async () => {
 					getHolidaysAsync.resolves([
 						{ date: local(2018, 12, 25) },

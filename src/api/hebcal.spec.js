@@ -26,6 +26,7 @@ const expectedHoliday = {
 	...mockResponse.data.items[0],
 	date: local(2015, 5, 22),
 	hebdate: mockResponse.data.items[1].title,
+	yomtov: false,
 };
 
 describe('hebcal', () => {
