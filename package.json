@@ -2,7 +2,7 @@
 	"name": "is-it-shabbat-core",
 	"version": "1.4.0",
 	"main": "lib/index.js",
-	"licenses": "MIT",
+	"license": "MIT",
 	"author": "James Fulford <james.fulford@outlook.com>",
 	"husky": {
 		"hooks": {
