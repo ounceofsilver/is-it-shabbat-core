@@ -16,15 +16,11 @@
 	"scripts": {
 		"prebuild": "rm -rf ./dist",
 		"build": "tsc",
+		"prepare": "yarn build",
 		"lint": "tslint -p tsconfig.json",
 		"test": "jest",
 		"ci": "yarn && yarn lint && yarn test --ci --coverage",
-		"report": "yarn test --coverage",
 		"scan": "yarn report && bash scripts/scan.sh",
-		"prepare": "yarn build",
-		"deploy:patch": "yarn ci && npm version patch && npm publish && git push && git push --tags",
-		"deploy:minor": "yarn ci && npm version minor && npm publish && git push && git push --tags",
-		"deploy:major": "yarn ci && npm version major && npm publish && git push && git push --tags",
 		"tdd": "yarn test --watch"
 	},
 	"files": [
