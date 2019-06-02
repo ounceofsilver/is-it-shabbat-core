@@ -26,7 +26,7 @@ describe('ShabbatCheck:', () => {
 
 		expect(spy).to.have.been.calledOnce();
 		const [period, duration] = spy.args[0];
-		expect(period).to.be.oneOf([is.SHABBAT, is.CANDLELIGHTING, is.NOT_SHABBAT]);
+		expect([is.SHABBAT, is.CANDLELIGHTING, is.NOT_SHABBAT]).to.contain(period);
 		expect(duration.isLuxonDateTime).to.be.true();
 
 		// renders results of inner function
