@@ -1,5 +1,5 @@
-const axios = require('axios');
-const { DateTime } = require('luxon');
+import axios from 'axios';
+import { DateTime } from 'luxon';
 
 const baseParams = {
 	v: 1,
@@ -15,7 +15,6 @@ const baseParams = {
 	// hebdate for every hebrew day in the month
 	d: 'off',
 };
-
 
 const defaultConfig = {
 	// Holidays
@@ -52,7 +51,7 @@ export const getHolidaysAsync = async (now, months, overrides = {}) => {
 	if (months <= 0) {
 		return [];
 	}
-	const monthArr = Array(months).fill().map((_, i) => i)
+	const monthArr = Array(months).fill(0).map((_, i) => i)
 		.map(m => now.plus({ months: m }));
 	const days = await Promise.all(
 		monthArr

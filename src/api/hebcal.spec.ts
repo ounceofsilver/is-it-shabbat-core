@@ -1,10 +1,10 @@
-const axios = sinon.stub();
-const {
-	sendHolidayRequestAsync,
+import { local } from '../test';
+jest.mock('axios');
+
+import {
 	getHolidaysAsync,
-} = proxyquire('../src/api/hebcal', {
-	axios,
-});
+	sendHolidayRequestAsync,
+} from './hebcal';
 
 const mockResponse = {
 	data: {
@@ -30,12 +30,13 @@ const expectedHoliday = {
 };
 
 describe('hebcal', () => {
+	let mockAxios;
 	beforeEach(() => {
-		axios.resolves(mockResponse);
+		mockAxios = jest.requireMock('axios');
+		mockAxios.mockReturnValue(Promise.resolve(mockResponse));
 	});
-
 	afterEach(() => {
-		sinon.resetHistory();
+		jest.resetAllMocks();
 	});
 
 	describe('sendHolidayRequestAsync', () => {
@@ -44,21 +45,21 @@ describe('hebcal', () => {
 				local(2018, 11, 1),
 				{},
 			);
-			expect(axios).to.have.been.calledOnce();
-			expect(axios.args[0][0]).to.deep.include({
+			expect(mockAxios).toHaveBeenCalledTimes(1);
+			expect(mockAxios.mock.calls[0][0]).toEqual(expect.objectContaining({
 				method: 'get',
 				url: 'https://www.hebcal.com/hebcal/',
-			});
-			expect(axios.args[0][0].params).to.deep.include({
-				year: 2018,
-				month: 11,
+				params: expect.objectContaining({
+					year: 2018,
+					month: 11,
 
-				// Critical defaults
-				D: 'on',
-				maj: 'on',
+					// Critical defaults
+					D: 'on',
+					maj: 'on',
 
-				i: 'off', // (so we know override test works)
-			});
+					i: 'off', // (so we know override test works)
+				}),
+			}));
 		});
 
 		it('should allow API setting overrides', async () => {
@@ -66,9 +67,9 @@ describe('hebcal', () => {
 				local(2018, 11, 1),
 				{ i: 'on' },
 			);
-			expect(axios.args[0][0].params).to.deep.include({
+			expect(mockAxios.mock.calls[0][0].params).toEqual(expect.objectContaining({
 				i: 'on',
-			});
+			}));
 		});
 	});
 
@@ -78,7 +79,7 @@ describe('hebcal', () => {
 				local(2018, 11, 1),
 				0,
 			);
-			expect(holidays).to.deep.equal([]);
+			expect(holidays).toEqual([]);
 		});
 
 		it('should collate holidays and hebdates', async () => {
@@ -86,7 +87,7 @@ describe('hebcal', () => {
 				local(2018, 11, 1),
 				1,
 			);
-			expect(holidays).to.deep.equal([
+			expect(holidays).toEqual([
 				expectedHoliday,
 			]);
 		});
@@ -96,20 +97,20 @@ describe('hebcal', () => {
 				local(2018, 11, 1),
 				3,
 			);
-			expect(axios).to.have.been.calledThrice();
-			expect(axios.args[0][0].params).to.deep.include({
+			expect(mockAxios).toHaveBeenCalledTimes(3);
+			expect(mockAxios.mock.calls[0][0].params).toEqual(expect.objectContaining({
 				year: 2018,
 				month: 11,
-			});
-			expect(axios.args[1][0].params).to.deep.include({
+			}));
+			expect(mockAxios.mock.calls[1][0].params).toEqual(expect.objectContaining({
 				year: 2018,
 				month: 12,
-			});
-			expect(axios.args[2][0].params).to.deep.include({
+			}));
+			expect(mockAxios.mock.calls[2][0].params).toEqual(expect.objectContaining({
 				year: 2019,
 				month: 1,
-			});
-			expect(holidays).to.deep.equal([
+			}));
+			expect(holidays).toEqual([
 				expectedHoliday,
 				expectedHoliday,
 				expectedHoliday,

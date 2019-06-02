@@ -1,7 +1,7 @@
 {
 	"name": "is-it-shabbat-core",
 	"version": "1.4.0",
-	"main": "lib/index.js",
+	"main": "dist/index.js",
 	"license": "MIT",
 	"author": "James Fulford <james.fulford@outlook.com>",
 	"husky": {
@@ -10,25 +10,24 @@
 			"pre-push": "yarn test && yarn build"
 		}
 	},
-	"nyc": {
-		"include": "src",
-		"exclude": "**/*.spec.js"
-	},
 	"publishConfig": {
 		"access": "public"
 	},
 	"scripts": {
-		"prebuild": "rm -rf ./lib",
-		"build": "babel src -d lib --copy-files",
-		"lint": "eslint ./src/**/*.js ./test",
-		"test": "mocha ./src/**/*.spec.js",
-		"report": "nyc --reporter=lcov --reporter=text yarn test",
+		"prebuild": "rm -rf ./dist",
+		"build": "tsc",
+		"lint": "tslint -p tsconfig.json",
+		"test": "jest",
+		"ci": "yarn test --ci",
+		"report": "yarn test --coverage",
 		"scan": "yarn report && bash scripts/scan.sh",
 		"prepare": "yarn build",
-		"tdd": "yarn test -- -w"
+		"tdd": "yarn test --watch"
 	},
+	"files": [
+		"dist"
+	],
 	"dependencies": {
-		"@babel/runtime": "7.2.0",
 		"axios": "0.18.0",
 		"luxon": "1.8.0",
 		"prop-types": "15.6.2",
@@ -38,35 +37,16 @@
 		"tz-lookup": "6.1.8"
 	},
 	"devDependencies": {
-		"@babel/cli": "7.2.3",
-		"@babel/core": "7.2.2",
-		"@babel/plugin-proposal-export-default-from": "7.2.0",
-		"@babel/plugin-proposal-object-rest-spread": "7.2.0",
-		"@babel/plugin-transform-runtime": "7.2.0",
-		"@babel/polyfill": "7.2.5",
-		"@babel/preset-env": "7.2.3",
-		"@babel/preset-react": "7.0.0",
-		"@babel/register": "7.0.0",
-		"babel-eslint": "10.0.1",
-		"chai": "4.2.0",
-		"chai-enzyme": "1.0.0-beta.1",
-		"dirty-chai": "2.0.1",
+		"@types/jest": "24.0.13",
 		"enzyme": "3.8.0",
 		"enzyme-adapter-react-16": "1.7.1",
-		"eslint": "5.9.0",
-		"eslint-config-airbnb": "17.1.0",
-		"eslint-plugin-import": "2.14.0",
-		"eslint-plugin-jsx-a11y": "6.1.2",
-		"eslint-plugin-react": "7.11.1",
 		"husky": "1.2.1",
-		"jsdom": "13.1.0",
-		"mocha": "5.2.0",
-		"mocha-eslint": "4.1.0",
-		"nyc": "13.1.0",
-		"proxyquire": "2.1.0",
 		"react-dom": "16.7.0",
-		"sinon": "7.1.1",
-		"sinon-chai": "3.2.0",
-		"sonarqube-scanner": "2.1.2"
+		"jest": "24.8.0",
+		"sonarqube-scanner": "2.1.2",
+		"ts-jest": "24.0.2",
+		"tslint": "5.16.0",
+		"tslint-config-airbnb": "5.11.1",
+		"typescript": "3.4.5"
 	}
 }
