@@ -1,8 +1,8 @@
 import { Duration } from 'luxon';
 
 import {
-	underAWeek,
 	formatHolidayDuration,
+	underAWeek,
 } from './durationFormatter';
 
 describe('durationFormatter:', () => {
@@ -12,7 +12,7 @@ describe('durationFormatter:', () => {
 				seconds: 12,
 			}));
 
-			expect(result).to.equal('12s');
+			expect(result).toBe('12s');
 		});
 
 		it('should return only minutes and seconds', () => {
@@ -21,7 +21,7 @@ describe('durationFormatter:', () => {
 				seconds: 12,
 			}));
 
-			expect(result).to.equal('4m 12s');
+			expect(result).toBe('4m 12s');
 		});
 
 		it('should return hours, minutes, and seconds', () => {
@@ -31,7 +31,7 @@ describe('durationFormatter:', () => {
 				seconds: 12,
 			}));
 
-			expect(result).to.equal('18h 4m 12s');
+			expect(result).toBe('18h 4m 12s');
 		});
 
 		it('should return days, hours, minutes, and seconds', () => {
@@ -42,13 +42,13 @@ describe('durationFormatter:', () => {
 				seconds: 12,
 			}));
 
-			expect(result).to.equal('3d 18h 4m 12s');
+			expect(result).toBe('3d 18h 4m 12s');
 		});
 
 		it('should return 0 at end of duration', () => {
 			const result = underAWeek(Duration.fromObject({}));
 
-			expect(result).to.equal('0s');
+			expect(result).toBe('0s');
 		});
 
 		it('should be able to handle longer durations', () => {
@@ -56,7 +56,7 @@ describe('durationFormatter:', () => {
 				days: 8,
 			}));
 
-			expect(result).to.equal('8d 0h 0m 0s');
+			expect(result).toBe('8d 0h 0m 0s');
 		});
 	});
 
@@ -66,7 +66,7 @@ describe('durationFormatter:', () => {
 				hours: 1,
 			}));
 
-			expect(result).to.equal('1h 0m 0s');
+			expect(result).toBe('1h 0m 0s');
 		});
 
 		it('should show only hours + minutes if no full days left', () => {
@@ -74,7 +74,7 @@ describe('durationFormatter:', () => {
 				hours: 3,
 			}));
 
-			expect(result).to.equal('3h 0m');
+			expect(result).toBe('3h 0m');
 		});
 
 		it('should show only days + hours if less than a week left', () => {
@@ -82,7 +82,7 @@ describe('durationFormatter:', () => {
 				days: 6,
 			}));
 
-			expect(result).to.equal('6d 0h');
+			expect(result).toBe('6d 0h');
 		});
 
 		it('should show only weeks + days if less than 2 weeks left', () => {
@@ -90,7 +90,7 @@ describe('durationFormatter:', () => {
 				weeks: 1,
 			}));
 
-			expect(result).to.equal('1w 0d');
+			expect(result).toBe('1w 0d');
 		});
 
 		it('should show only show weeks if more than 2 weeks left', () => {
@@ -98,7 +98,7 @@ describe('durationFormatter:', () => {
 				weeks: 3,
 			}));
 
-			expect(result).to.equal('3w');
+			expect(result).toBe('3w');
 		});
 	});
 });

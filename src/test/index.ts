@@ -1,9 +1,9 @@
 import { DateTime } from 'luxon';
 
 export const local = (
-	y: number,
-	m: number,
-	d: number,
+	y?: number,
+	m?: number,
+	d?: number,
 	h: number = 0,
 	min: number = 0,
 	s: number = 0,

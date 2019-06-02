@@ -1,37 +1,40 @@
+import { DateTime } from 'luxon';
 import { sunset } from 'shabbat-logic';
+
 import { getHolidaysAsync } from '../api/hebcal';
 import store from './store';
+import { ActionType, IAction, IHoliday, ILocation } from './types';
 
 //
 // Atomic actions
 //
-// Do not export; forse use of updateHolidays
-export const setNow = now => ({
-	type: 'SET_NOW',
+// Do not export; force use of updateHolidays
+export const setNow = (now: DateTime): IAction => ({
 	now,
+	type: ActionType.SET_NOW,
 });
 
-const setHolidays = (holidays, now) => ({
-	type: 'SET_HOLIDAYS',
+const setHolidays = (holidays: IHoliday[], now: DateTime): IAction => ({
 	holidays,
 	now,
+	type: ActionType.SET_HOLIDAYS,
 });
 
-export const setLocation = location => ({
-	type: 'SET_LOCATION',
+export const setLocation = (location: ILocation): IAction => ({
 	location,
+	type: ActionType.SET_LOCATION,
 });
 
-export const initialize = (now, location) => ({
-	type: 'INITIALIZE',
+export const initialize = (now: DateTime, location: ILocation): IAction => ({
 	now,
 	location,
+	type: ActionType.INITIALIZE,
 });
 
 //
 // Advanced actions
 //
-export const updateHolidays = (force = false) => {
+export const updateHolidays = (force: boolean = false): Promise<any> => {
 	// When location or time updates
 	// and time is a different month or year,
 	// update holidays list again

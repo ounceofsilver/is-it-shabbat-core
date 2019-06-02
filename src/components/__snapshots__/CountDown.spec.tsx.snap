@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CountDown should render 1`] = `
+<p>
+  Hello
+  1
+  s
+</p>
+`;

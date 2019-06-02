@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShabbatCheck: should call child with period and duration 1`] = `
+<p>
+  Hello
+</p>
+`;
