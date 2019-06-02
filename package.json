@@ -7,7 +7,7 @@
 	"husky": {
 		"hooks": {
 			"pre-commit": "yarn lint",
-			"pre-push": "yarn test && yarn build"
+			"pre-push": "yarn ci"
 		}
 	},
 	"publishConfig": {
@@ -18,7 +18,7 @@
 		"build": "tsc",
 		"lint": "tslint -p tsconfig.json",
 		"test": "jest",
-		"ci": "yarn lint && yarn test --ci --coverage",
+		"ci": "yarn && yarn lint && yarn test --ci --coverage",
 		"report": "yarn test --coverage",
 		"scan": "yarn report && bash scripts/scan.sh",
 		"prepare": "yarn build",
