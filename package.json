@@ -20,7 +20,6 @@
 		"lint": "tslint -p tsconfig.json",
 		"test": "jest",
 		"ci": "yarn && yarn lint && yarn test --ci --coverage",
-		"scan": "yarn report && bash scripts/scan.sh",
 		"tdd": "yarn test --watch"
 	},
 	"files": [
@@ -29,18 +28,15 @@
 	"dependencies": {
 		"axios": "0.19.0",
 		"luxon": "1.8.0",
-		"react": "16.7.0",
 		"redux": "4.0.0",
-		"shabbat-logic": "1.0.0",
-		"tz-lookup": "6.1.8"
+		"redux-thunk": "2.3.0",
+		"shabbat-logic": "1.1.1",
+		"tz-lookup": "6.1.24"
 	},
 	"devDependencies": {
 		"@types/jest": "24.0.13",
-		"@types/react": "16.7.0",
 		"husky": "1.2.1",
 		"jest": "24.8.0",
-		"react-test-renderer": "16.8.6",
-		"sonarqube-scanner": "2.1.2",
 		"ts-jest": "24.0.2",
 		"tslint": "5.16.0",
 		"tslint-config-airbnb": "5.11.1",

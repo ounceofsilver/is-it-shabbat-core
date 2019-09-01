@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { DateTime } from 'luxon';
+import { IHoliday } from '../models/holidays';
 
 const baseParams = {
 	v: 1,
@@ -14,31 +15,29 @@ const baseParams = {
 	D: 'on',
 	// hebdate for every hebrew day in the month
 	d: 'off',
-};
 
-const defaultConfig = {
-	// Holidays
-	maj: 'on', // major holidays
-	min: 'off', // minor holidays
-	mod: 'off', // modern holidays
-	nx: 'on', // rosh chodeshim
-	ss: 'on', // special shabbats
 	s: 'off', // parashat data
-	mf: 'off', // minor fasts
 	o: 'on', // days of omer
-
-	// language
 	lg: 'a', // ashkenazi pronouncement
-
-	// Depends on location (Israel)
-	i: 'off',
 };
 
-export const sendHolidayRequestAsync = (t, overrides) => axios({
+type OnOff = 'on' | 'off';
+
+export interface IHebcalOptions {
+	// Holidays
+	maj: OnOff; // major holidays
+	min: OnOff; // minor holidays
+	mod: OnOff; // modern holidays
+	nx: OnOff; // rosh chodesh
+	ss: OnOff; // special shabbats
+	mf: OnOff; // minor fasts
+	i: OnOff; // in israel (double-holidays)
+}
+
+export const sendHolidayRequestAsync = (t, overrides = {}) => axios({
 	method: 'get',
 	url: 'https://www.hebcal.com/hebcal/',
 	params: {
-		...defaultConfig,
 		...overrides,
 		// Depends on current time
 		year: t.year,
@@ -47,7 +46,11 @@ export const sendHolidayRequestAsync = (t, overrides) => axios({
 	},
 });
 
-export const getHolidaysAsync = async (now, months, overrides = {}) => {
+export const getHolidaysAsync = async (
+	now: DateTime,
+	months: number,
+	overrides = {},
+): Promise<IHoliday[]> => {
 	if (months <= 0) {
 		return [];
 	}
