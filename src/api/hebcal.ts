@@ -51,23 +51,27 @@ export const getHolidaysAsync = async (
 	months: number,
 	overrides = {},
 ): Promise<IHoliday[]> => {
+
 	if (months <= 0) {
 		return [];
 	}
+
 	const monthArr = Array(months).fill(0).map((_, i) => i)
 		.map(m => now.plus({ months: m }));
+
 	const days = await Promise.all(
 		monthArr
 			.map(t => sendHolidayRequestAsync(t, overrides)),
 	).then(resps => resps
 		.map(response => response.data.items)
 		.reduce((a, x) => a.concat(x)));
+
 	// date to hebrew date string mapping
 	const hebdates = new Map();
 	days
 		.filter(i => i.category === 'hebdate')
 		.forEach((i) => {
-			hebdates[i.date] = i.title;
+			hebdates.set(i.date, i.title);
 		});
 
 	// preparing holidays list
@@ -79,7 +83,7 @@ export const getHolidaysAsync = async (
 		return ({
 			...h,
 			yomtov: Boolean(h.yomtov),
-			hebdate: hebdates[h.date],
+			hebdate: hebdates.get(h.date),
 			date: DateTime.fromObject({
 				year,
 				month,
@@ -87,7 +91,7 @@ export const getHolidaysAsync = async (
 				hour: 0,
 				minute: 0,
 				second: 0,
-				zone: now.zone,
+				zone: now.zoneName,
 			}).minus({ days: 1 }),
 			// hebcal gregorian dates correspond
 			// to the END of the hebrew day.

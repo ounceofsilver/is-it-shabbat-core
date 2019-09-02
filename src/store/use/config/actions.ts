@@ -10,7 +10,7 @@ export interface ISetLocationAction {
 	location: ILocation;
 }
 
-export function setConfig(location: ILocation): ISetLocationAction {
+export function setLocation(location: ILocation): ISetLocationAction {
 	return {
 		location,
 		type: ConfigType.SET_LOCATION,
